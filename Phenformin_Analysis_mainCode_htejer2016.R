@@ -11,19 +11,21 @@ require("hgu133plus2.db")
 require("AnnotationDbi")
 require(ggplot2)
 
+path = "" # the path where the files are going to be downloaded 
 
 ## Download and unzip the expression file from GSE51798 project
 
 # ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE51nnn/GSE51798/suppl/GSE51798_PDX_and_PT_data_plus_reprocessed_data.txt.gz
 
-path = "" # include the path where the expression file is 
+## Download the samples_phen_met.tsv file from https://github.com/htejero/PhenforminPDXAnalysis into the path directory
+
+## Download also the Phenformin_Limma_model_level3.gmt file with the Phenformin signatures into the oath directory
 
 expression.file = file.path(path, "GSE51798_PDX_and_PT_data_plus_reprocessed_data.txt")  
 
 expression.data = read.table(expression.file, 
                header = TRUE)
 
-## Downlaod samples_phen_met.tsv from https://github.com/htejero/PhenforminPDXAnalysis in the path directory
 
 response.data =read.csv(file.path( path, "samples_phen_met.tsv"), header = TRUE, stringsAsFactors = FALSE)
 
